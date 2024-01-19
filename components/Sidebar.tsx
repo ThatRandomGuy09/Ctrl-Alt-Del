@@ -39,8 +39,9 @@ const Sidebar = ({ children }: SidebarProps) => {
   return (
     <div 
       className={twMerge(`
-        flex 
+        flex
         h-full
+        flex-row-reverse
         `
       )}
     >
