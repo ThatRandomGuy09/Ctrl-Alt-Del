@@ -9,7 +9,7 @@ import './globals.css'
 const font = Figtree({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Spotify Clone',
+  title: 'Mood Jam',
   description: 'Spotify Clone',
 }
 
