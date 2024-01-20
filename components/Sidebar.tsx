@@ -12,6 +12,7 @@ import Box from "./Box";
 import Library from "./Library";
 import { useMemo } from "react";
 
+
 interface SidebarProps {
   children: React.ReactNode;
 
@@ -38,22 +39,20 @@ const Sidebar = ({ children }: SidebarProps) => {
 
   return (
     <div 
-      className={twMerge(`
-        flex 
-        h-full
+      className={twMerge(`flex h-full 
         `
       )}
     >
       <div 
         className="
-          hidden 
-          md:flex 
-          flex-col 
-          gap-y-2 
-          bg-black 
-          h-full 
-          w-[300px] 
-          p-2
+        hidden 
+        md:flex 
+        flex-col 
+        gap-y-2 
+        bg-black 
+        h-full 
+        w-[300px] 
+        p-2
         "
       >
         <Box>

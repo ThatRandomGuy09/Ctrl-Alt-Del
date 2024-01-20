@@ -1,48 +1,41 @@
-"use client";
-import { forwardRef } from "react";
-import { twMerge } from "tailwind-merge";
+'use client';
+import { useRouter } from "next/navigation";
+import { FaPlay } from "react-icons/fa";
+import Image from "next/image"; // Import Image from 'next/image'
+import { MouseEvent } from "react";
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+interface ListItemProps {
+  image: string;
+  name: string;
+  href: string;
+}
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
-  className,
-  children,
-  disabled,
-  type = 'button',
-  ...props
-}, ref) => {
+const ListItem: React.FC<ListItemProps> = ({ image, name, href }) => {
+  const router = useRouter();
+
+  const onClick = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault(); // Prevent the default behavior of the button
+    router.push(href);
+  };
+
   return (
-    <button
-      type={type}
-      className={twMerge(
-        `
-        w-full 
-        rounded-full 
-        bg-green-500
-        border
-        border-transparent
-        px-3 
-        py-3 
-        disabled:cursor-not-allowed 
-        disabled:opacity-50
-        text-black
-        font-bold
-        hover:opacity-75
-        transition
-      `,
-        disabled && 'opacity-75 cursor-not-allowed',
-        className
-      )}
-      disabled={disabled}
-      ref={ref}
-      {...props}
-    >
-      {children}
+    <button onClick={onClick} className="relative group flex items-center rounded-md overflow-hidden gap-x-4 bg-neutral-100/10 hover:bg-neutral-100/20 transition pr-4">
+      <div className="relative min-h-[64px] min-w-[64px]">
+        <Image
+          className="object-cover"
+          fill
+          src={image}
+          alt="Image"
+          width={64} // Set the width and height for the Image component
+          height={64}
+        />
+      </div>
+      <p className="font-medium truncate py-5">{name}</p>
+      <div className="absolute transition opacity-0 rounded-full flex items-center justify-center bg-green-500 p-4 drop-shadow-md right-% group-hover:opacity-100 hover:scale-110">
+        <FaPlay />
+      </div>
     </button>
   );
-});
+};
 
-Button.displayName = "Button";
-
-export default Button;
+export default ListItem;
