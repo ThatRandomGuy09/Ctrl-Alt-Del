@@ -51,7 +51,7 @@ const Sidebar = ({ children }: SidebarProps) => {
           w-[300px] 
           p-2
           fixed
-          right-0 // Move sidebar to the right
+          right-0 
         `)}
       >
         <Box>
@@ -65,6 +65,9 @@ const Sidebar = ({ children }: SidebarProps) => {
           <Library />
         </Box>
       </div>
+      <main className="h-full flex-1 overflow-y-auto py-2">
+        {children}
+      </main>
     </div>
   );
 };
